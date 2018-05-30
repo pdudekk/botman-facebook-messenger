@@ -20,23 +20,7 @@ class ExampleConversation extends Conversation
         $this->firstname = $user->getFirstName();
 
         $this->say("Cześć ".$this->firstname."!");
-        $this->ask("Ile masz lat?" , function(Answer $answer){
-
-          $this->age = $answer->getText();
-
-          if(is_numeric($this->age)){
-            if(intval($this->age) >= 13 && intval($this->age) <= 100){
-              $this->say('Masz '.$this->age.' lat!');
-            }else{
-              $this->rightValue();
-            }
-          }else{
-            $this->rightValue();
-          }
-
-
-
-        });
+        $this->rightValue();
         /*
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
@@ -61,7 +45,12 @@ class ExampleConversation extends Conversation
 
     public function rightValue(){
 
-      $this->ask("Podaj poprawną wartość!" , function(Answer $answer){
+      String $question = "";
+
+      if($age == NULL) $question = "Ile masz lat?";
+      else $question = "podaj poprawną wartość!";
+
+      $this->ask($question , function(Answer $answer){
 
         $this->age = $answer->getText();
         if(is_numeric($this->age)){
