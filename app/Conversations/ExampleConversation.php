@@ -45,7 +45,7 @@ class ExampleConversation extends Conversation
 
     public function rightValue(){
 
-      String $question = "";
+      $question = "";
 
       if($age == NULL) $question = "Ile masz lat?";
       else $question = "podaj poprawną wartość!";
