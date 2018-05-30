@@ -28,10 +28,10 @@ class ExampleConversation extends Conversation
             if(intval($this->age) >= 13 && intval($this->age) <= 100){
               $this->say('Masz '.$this->age.' lat!');
             }else{
-              $this->say('Podaj poprawną wartość!');
+              $this->rightValue();
             }
           }else{
-            $this->say('Podaj poprawną wartość!');
+            $this->rightValue();
           }
 
 
@@ -58,6 +58,24 @@ class ExampleConversation extends Conversation
         });
         */
     }
+
+    public function rightValue(){
+
+      $this->ask("Podaj poprawną wartość!" , function(Answer $answer){
+
+        $this->age = $answer->getText();
+        if(is_numeric($this->age)){
+          if(intval($this->age) >= 13 && intval($this->age) <= 100){
+            $this->say('Masz '.$this->age.' lat!');
+          }else{
+            $this->rightValue();
+          }
+        }else{
+          $this->rightValue();
+        }
+    }
+  }
+
 
     /**
      * Start the conversation
