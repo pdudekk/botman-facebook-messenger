@@ -30,7 +30,7 @@ class MyConversation extends Conversation
       $ifsetAge = "";
 
       if($this->age == NULL) $ifsetAge = "Ile masz lat?";
-      else $ifsetAge = "podaj poprawną wartość!";
+      else $ifsetAge = "Proszę o podanie wieku w zakresie 13 do 100 lat";
 
       $this->ask($ifsetAge , function(Answer $answer){
 
@@ -52,7 +52,7 @@ class MyConversation extends Conversation
 
   public function askIfTrue(){
 
-          $question = Question::create('Urodziłeś się w '.$this->year.' roku?')
+          $question = Question::create('Dziękuje. Twój rok urodzenia to '.$this->year.'?')
           ->fallback('Unable to ask question')
           ->callbackId('ask_reason')
           ->addButtons([
