@@ -24,7 +24,7 @@ class ExampleConversation extends Conversation
 
           $this->age = $answer->getText();
 
-          if(is_numeric($this.age)){
+          if(is_numeric($this->age)){
               $this->say('Masz '.$this->age.' lat!');
           }else{
             $this->say('Podaj poprawną wartość!');
