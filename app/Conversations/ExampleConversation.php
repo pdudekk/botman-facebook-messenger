@@ -47,7 +47,7 @@ class ExampleConversation extends Conversation
 
       $question = "";
 
-      if($age == NULL) $question = "Ile masz lat?";
+      if($this->age == NULL) $question = "Ile masz lat?";
       else $question = "podaj poprawną wartość!";
 
       $this->ask($question , function(Answer $answer){
