@@ -16,10 +16,10 @@ class ExampleConversation extends Conversation
     public function sayHello()
     {
 
-      //  $user = $bot->getUser();
-      //  $firstname = $user->getFirstName();
+        $user = $this->bot->getUser();
+        $this->firstname = $user->getFirstName();
 
-        $this->say("Cześć !");
+        $this->say("Cześć ".$this->firstname."!");
         $this->ask("Ile masz lat?" , function(Answer $answer){
 
           $this->age = $answer->getText();
