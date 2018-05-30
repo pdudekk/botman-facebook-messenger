@@ -45,18 +45,39 @@ class ExampleConversation extends Conversation
 
     public function rightValue(){
 
-      $question = "";
+      $question = Question::create('Urodziłeś się w '.$year.' roku?')
+       ->addButtons([
+           Button::create('tak')->value('yes'),
+           Button::create('nie')->value('no'),
+       ]);
 
-      if($this->age == NULL) $question = "Ile masz lat?";
-      else $question = "podaj poprawną wartość!";
+      $ifsetAge = "";
 
-      $this->ask($question , function(Answer $answer){
+      if($this->age == NULL) $ifsetAge = "Ile masz lat?";
+      else $ifsetAge = "podaj poprawną wartość!";
+
+      $this->ask($ifsetAge , function(Answer $answer){
 
         $this->age = $answer->getText();
         if(is_numeric($this->age)){
           if(intval($this->age) >= 13 && intval($this->age) <= 100){
             $year = date("Y") - intval($this->age);
-            $this->say('Urodziłeś się w '.$year.' lat!');
+          //  $this->say('Urodziłeś się w '.$year.' roku?');
+          $this->ask($question, function (Answer $answer) {
+        // Detect if button was clicked:
+          if ($answer->isInteractiveMessageReply()) {
+              //$selectedValue = $answer->getValue();
+              if($answer->getValue() == 'yes'){
+                $this->say("Świetnie. Dziękuje za odpowiedź.");
+              }
+              else if($answer->getValue() == 'no'){
+                $ifsetAge = NULL;
+                $this->rightValue();
+              }
+          }
+        });
+
+
           }else{
             $this->rightValue();
           }
