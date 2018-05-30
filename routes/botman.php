@@ -4,9 +4,9 @@ use App\Http\Controllers\BotManController;
 $botman = resolve('botman');
 
 $botman->hears('Hi', function ($bot) {
-    $bot->reply('Hello!');
+    $user = $bot->getUser();
+    $firstname = $user->getFirstName();
+    $bot->reply('Hello!'.' '.$firstname);
 });
 
 $botman->hears('Start conversation', BotManController::class.'@startConversation');
-
-$botman->listen();
