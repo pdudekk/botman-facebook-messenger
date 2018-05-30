@@ -73,7 +73,7 @@ class ExampleConversation extends Conversation
         }else{
           $this->rightValue();
         }
-    }
+    });
   }
 
 
