@@ -16,9 +16,10 @@ class ExampleConversation extends Conversation
     public function sayHello()
     {
 
-        $user = $bot->getUser();
-        $firstname = $user->getFirstName();
-        $this->say("Cześć ".$firstname."!");
+      //  $user = $bot->getUser();
+      //  $firstname = $user->getFirstName();
+
+        $this->say("Cześć !");
         $this->ask("Ile masz lat?" , function(Answer $answer){
 
           $this->age = $answer->getText();
@@ -34,7 +35,7 @@ class ExampleConversation extends Conversation
                 Button::create('Give me a fancy quote')->value('quote'),
             ]);
 */
-        
+
         /*, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 if ($answer->getValue() === 'joke') {
