@@ -46,6 +46,8 @@ class ExampleConversation extends Conversation
     public function rightValue(){
 
       $question = Question::create('Urodziłeś się w '.$year.' roku?')
+      ->fallback('Unable to ask question')
+      ->callbackId('ask_reason')
        ->addButtons([
            Button::create('tak')->value('yes'),
            Button::create('nie')->value('no'),
