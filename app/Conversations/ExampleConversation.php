@@ -83,10 +83,10 @@ class ExampleConversation extends Conversation
        // Detect if button was clicked:
          if ($answer->isInteractiveMessageReply()) {
              //$selectedValue = $answer->getValue();
-             if($answer->getValue() == 'yes'){
+             if($answer->getValue() === 'yes'){
                $this->say("Świetnie. Dziękuje za odpowiedź.");
              }
-             else if($answer->getValue() == 'no'){
+             else if($answer->getValue() === 'no'){
                $this->age = NULL;
                $this->rightValue();
              }
