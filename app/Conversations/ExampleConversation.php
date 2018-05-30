@@ -55,8 +55,8 @@ class ExampleConversation extends Conversation
         $this->age = $answer->getText();
         if(is_numeric($this->age)){
           if(intval($this->age) >= 13 && intval($this->age) <= 100){
-            $year = date("Y");
-            $this->say('Urodziłeś się w '.$year-intval($this->age).' lat!');
+            $year = date("Y") - intval($this->age);
+            $this->say('Urodziłeś się w '.$year.' lat!');
           }else{
             $this->rightValue();
           }
