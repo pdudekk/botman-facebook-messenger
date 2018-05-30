@@ -10,15 +10,22 @@ use BotMan\BotMan\Messages\Conversations\Conversation;
 
 class ExampleConversation extends Conversation
 {
-    /**
-     * First question
-     */
+    protected $firstname;
+    protected $age;
+
     public function sayHello()
     {
+
         $user = $bot->getUser();
         $firstname = $user->getFirstName();
+        $this->say("Cześć ".$firstname."!");
+        $this->ask("Ile masz lat?" , function(Answer $answer){
 
-        $question = Question::create("Cześć ".$firstname."!");
+          $this->age = $answer->getText();
+
+          $this->say('Masz '.$this->age.' lat!');
+
+        });
         /*
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
@@ -27,7 +34,7 @@ class ExampleConversation extends Conversation
                 Button::create('Give me a fancy quote')->value('quote'),
             ]);
 */
-        return $this->ask($question);
+        
         /*, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 if ($answer->getValue() === 'joke') {
