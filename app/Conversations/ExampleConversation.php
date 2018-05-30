@@ -13,17 +13,22 @@ class ExampleConversation extends Conversation
     /**
      * First question
      */
-    public function askReason()
+    public function sayHello()
     {
-        $question = Question::create("Huh - you woke me up. What do you need?")
+        $user = $bot->getUser();
+        $firstname = $user->getFirstName();
+
+        $question = Question::create("Cześć ".$firstname."!");
+        /*
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
                 Button::create('Tell a joke')->value('joke'),
                 Button::create('Give me a fancy quote')->value('quote'),
             ]);
-
-        return $this->ask($question, function (Answer $answer) {
+*/
+        return $this->ask($question);
+        /*, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 if ($answer->getValue() === 'joke') {
                     $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
@@ -33,6 +38,7 @@ class ExampleConversation extends Conversation
                 }
             }
         });
+        */
     }
 
     /**
@@ -40,6 +46,6 @@ class ExampleConversation extends Conversation
      */
     public function run()
     {
-        $this->askReason();
+        $this->sayHello();
     }
 }
