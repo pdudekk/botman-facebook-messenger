@@ -1,19 +1,14 @@
-<p align="center"><img height="188" width="198" src="https://botman.io/img/botman.png"></p>
-<h1 align="center">BotMan Studio</h1>
+## BotMan studio facebook messenger bot
 
-## About BotMan Studio
+Facebook messenger bot created with [Botman Studio](https://botman.io/)
 
-While BotMan itself is framework agnostic, BotMan is also available as a bundle with the great [Laravel](https://laravel.com) PHP framework. This bundled version is called BotMan Studio and makes your chatbot development experience even better. By providing testing tools, an out of the box web driver implementation and additional tools like an enhanced CLI with driver installation, class generation and configuration support, it speeds up the development significantly.
+## Prerequisites
 
-## Documentation
+[Facebook for developers](https://developers.facebook.com) account and created messenger app.
 
-You can find the BotMan and BotMan Studio documentation at [http://botman.io](http://botman.io).
+## Installing
 
-## Support the development
-**Do you like this project? Support it by donating**
-
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=m%2epociot%40googlemail%2ecom&lc=CY&item_name=BotMan&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
-- Patreon: [Donate](https://www.patreon.com/botman)
+``
 
 ## Security Vulnerabilities
 
@@ -22,4 +17,3 @@ If you discover a security vulnerability within BotMan or BotMan Studio, please 
 ## License
 
 BotMan is free software distributed under the terms of the MIT license.
-
